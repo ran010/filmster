@@ -4,5 +4,8 @@ class User < ActiveRecord::Base
   validates :username ,presence: true  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         
+  has_many :review, dependent: :destroy
+  
   mount_uploader :photo, PhotoUploader
 end
